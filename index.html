@@ -922,5 +922,43 @@ if ("serviceWorker" in navigator) {
 }
 </script>
 
+
+<!-- MONBUDGET PREMIUM FLOATING BUTTON -->
+<style>
+  #mbPremiumFloating {
+    position: fixed;
+    right: 18px;
+    bottom: 22px;
+    z-index: 99999;
+    background: linear-gradient(135deg, #f1cd75, #c49a3d);
+    color: #101828;
+    border: 2px solid #fff0c2;
+    border-radius: 30px;
+    padding: 13px 20px;
+    font-size: 15px;
+    font-weight: 800;
+    box-shadow: 0 5px 20px rgba(0,0,0,.3);
+    cursor: pointer;
+  }
+</style>
+
+<button id="mbPremiumFloating" type="button">
+  👑 Premium
+</button>
+
+<script>
+  document.getElementById("mbPremiumFloating")
+    .addEventListener("click", function () {
+      const premium = document.querySelector(".mb-premium");
+
+      if (premium) {
+        premium.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+      }
+    });
+</script>
+<!-- END MONBUDGET PREMIUM FLOATING BUTTON -->
 </body>
 </html>
