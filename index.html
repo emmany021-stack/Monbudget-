@@ -1,56 +1,121 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mon Budget.com</title>
+
 <style>
-:root{--bg:#f6f7f9;--card:#fff;--tx:#14181f;--mut:#6b7280;--line:#e5e7eb;--acc:#0f766e;--onacc:#fff;--inc:#15803d;--exp:#b91c1c;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1318;--card:#181e26;--tx:#eef1f5;--mut:#9aa4b2;--line:#28303b;--acc:#2dd4bf;--onacc:#06201c;--inc:#4ade80;--exp:#f87171;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0f1318;--card:#181e26;--tx:#eef1f5;--mut:#9aa4b2;--line:#28303b;--acc:#2dd4bf;--onacc:#06201c;--inc:#4ade80;--exp:#f87171;color-scheme:dark}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
+:root{
+--bg:#f6f7f9;--card:#fff;--tx:#14181f;
+--mut:#6b7280;--line:#e5e7eb;--acc:#0f766e;
+--onacc:#fff;--inc:#15803d;--exp:#b91c1c;
+color-scheme:light;
+box-sizing:border-box;
+padding-top:env(safe-area-inset-top,0px);
+padding-bottom:env(safe-area-inset-bottom,0px)
+}
+
+@media(prefers-color-scheme:dark){
+:root:not([data-theme="light"]){
+--bg:#0f1318;--card:#181e26;--tx:#eef1f5;
+--mut:#9aa4b2;--line:#28303b;--acc:#2dd4bf;
+--onacc:#06201c;--inc:#4ade80;--exp:#f87171;
+color-scheme:dark
+}}
+
+:root[data-theme="dark]{
+--bg:#0f1318;--card:#181e26;--tx:#eef1f5;
+--mut:#9aa4b2;--line:#28303b;--acc:#2dd4bf;
+--onacc:#06201c;--inc:#4ade80;--exp:#f87171;
+color-scheme:dark
+}
+
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{
+margin:0;background:var(--bg);color:var(--tx);
+font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif
+}
 main{max-width:640px;margin:0 auto;padding:16px}
 h1{font-size:22px;margin:4px 0 12px}
 h2{font-size:16px;margin:0 0 10px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px}
+.card{
+background:var(--card);border:1px solid var(--line);
+border-radius:14px;padding:14px;margin-bottom:14px
+}
 .row{display:flex;gap:8px;flex-wrap:wrap}
 .row>*{flex:1 1 120px;min-width:0}
-input,select,button{font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px}
+input,select,button{
+font:inherit;color:var(--tx);background:var(--bg);
+border:1px solid var(--line);border-radius:10px;padding:10px
+}
 button{cursor:pointer}
-button.p{background:var(--acc);color:var(--onacc);border-color:var(--acc);font-weight:600}
+button.p{
+background:var(--acc);color:var(--onacc);
+border-color:var(--acc);font-weight:600
+}
 .seg{display:flex;gap:6px;margin-bottom:12px}
 .seg button{flex:1}
-.seg button.on{background:var(--acc);color:var(--onacc);border-color:var(--acc);font-weight:600}
+.seg button.on{
+background:var(--acc);color:var(--onacc);
+border-color:var(--acc);font-weight:600
+}
 .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px}
+.kpi{
+background:var(--card);border:1px solid var(--line);
+border-radius:14px;padding:10px
+}
 .kpi small{color:var(--mut);display:block}
 .kpi b{font-size:15px;word-break:break-word}
-.tx{display:flex;align-items:center;gap:8px;padding:8px 0;border-top:1px solid var(--line)}
+.tx{
+display:flex;align-items:center;gap:8px;
+padding:8px 0;border-top:1px solid var(--line)
+}
 .tx:first-of-type{border-top:0}
 .tx .m{flex:1;min-width:0}
-.tx .m small{color:var(--mut);display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tx .m small{
+color:var(--mut);display:block;overflow:hidden;
+text-overflow:ellipsis;white-space:nowrap
+}
 .tx .a{font-weight:600}
 .tx button{padding:4px 9px}
 .bud{margin-bottom:12px}
-.bud .h{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.bud .h{
+display:flex;justify-content:space-between;
+align-items:center;gap:8px
+}
 .bud input{width:110px;padding:6px 8px}
-.bar{height:8px;background:var(--line);border-radius:6px;overflow:hidden;margin-top:6px}
+.bar{
+height:8px;background:var(--line);
+border-radius:6px;overflow:hidden;margin-top:6px
+}
 .bar i{display:block;height:100%;background:var(--acc)}
 .bar i.over{background:var(--exp)}
 .warn{color:var(--exp);font-size:13px}
 .mut{color:var(--mut);font-size:13px}
-a.btn{display:block;text-align:center;text-decoration:none;background:var(--acc);color:var(--onacc);padding:10px;border-radius:10px;font-weight:600;margin-top:10px}
+a.btn{
+display:block;text-align:center;text-decoration:none;
+background:var(--acc);color:var(--onacc);
+padding:10px;border-radius:10px;font-weight:600;margin-top:10px
+}
 </style>
 </head>
+
 <body>
 <main>
+
 <h1 id="logo"></h1>
 <p class="mut" id="tag" style="margin:-6px 0 12px"></p>
-<div class="seg"><button id="bp">Particulier</button><button id="bo">Entreprise</button></div>
 
-<div class="row" style="margin-bottom:12px"><input type="month" id="ym" aria-label="Mois"></div>
+<div class="seg">
+<button id="bp">Particulier</button>
+<button id="bo">Entreprise</button>
+</div>
+
+<div class="row" style="margin-bottom:12px">
+<input type="month" id="ym" aria-label="Mois">
+</div>
 
 <div class="kpis" style="margin-bottom:14px">
 <div class="kpi"><small>Revenus</small><b id="inc"></b></div>
@@ -61,23 +126,36 @@ a.btn{display:block;text-align:center;text-decoration:none;background:var(--acc)
 <div class="card">
 <h2>Ajouter une opération</h2>
 <div class="row">
-<select id="type"><option value="out">Dépense</option><option value="in">Revenu</option></select>
-<input id="amt" type="number" inputmode="decimal" min="0" step="0.01" placeholder="Montant">
+<select id="type">
+<option value="out">Dépense</option>
+<option value="in">Revenu</option>
+</select>
+<input id="amt" type="number" inputmode="decimal"
+min="0" step="0.01" placeholder="Montant">
 </div>
+
 <div class="row" style="margin-top:8px">
 <select id="cat"></select>
 <input id="date" type="date">
 </div>
+
 <div class="row" style="margin-top:8px">
-<input id="note" type="text" placeholder="Note (facultatif)" maxlength="80">
+<input id="note" type="text"
+placeholder="Note (facultatif)" maxlength="80">
 <button class="p" id="add" style="flex:0 0 auto">Ajouter</button>
 </div>
 <div id="err" class="warn"></div>
 </div>
 
-<div class="card"><h2>Opérations du mois</h2><div id="list"></div></div>
+<div class="card">
+<h2>Opérations du mois</h2>
+<div id="list"></div>
+</div>
 
-<div class="card"><h2>Budgets par catégorie</h2><div id="buds"></div></div>
+<div class="card">
+<h2>Budgets par catégorie</h2>
+<div id="buds"></div>
+</div>
 
 <div class="card">
 <h2 id="ptitle"></h2>
@@ -85,105 +163,248 @@ a.btn{display:block;text-align:center;text-decoration:none;background:var(--acc)
 <a class="btn" id="plink" href="#">Passer à Premium</a>
 </div>
 
-<p class="mut" style="text-align:center">Vos données restent sur cet appareil.</p>
+<p class="mut" style="text-align:center">
+Vos données restent sur cet appareil.
+</p>
+
 </main>
+
 <script>
-/* ===== À REMPLIR PAR VOUS ===== */
+
+/* CONFIGURATION */
+
 const CONFIG = {
-  TAGLINE: "Ton portefeuille actif", // votre slogan
-  APP_NAME: "Mon Budget.com",              // le nom de votre application
-  LOGO: "💰",                          // un emoji ou votre logo
-  CURRENCY: "$",                       // votre devise
-  PREMIUM_PRICE: "7,99 $/mois",        // votre prix d’abonnement
-  PREMIUM_TEXT: "Export des données, rapports avancés, plusieurs comptes.", // ce que contient Premium
-  CONTACT: "monbudgetapp.service@gmail.com"           // votre adresse de contact / paiement
+TAGLINE: "Ton portefeuille actif",
+APP_NAME: "Mon Budget.com",
+LOGO: "💰",
+CURRENCY: "USD",
+PREMIUM_PRICE: "7,99 $/mois",
+PREMIUM_TEXT: "Export des données, rapports avancés, plusieurs comptes.",
+CONTACT: "monbudgetapp.service@gmail.com"
 };
-/* ================================ */
+
+/* FORMAT MONETAIRE USD */
+
+const moneyFormatter = new Intl.NumberFormat("en-US", {
+style: "currency",
+currency: CONFIG.CURRENCY
+});
+
+const fmt = n => moneyFormatter.format(n);
+
+/* CATEGORIES */
 
 const CATS = {
-  part: { in: ["Salaire", "Autres revenus"], out: ["Logement", "Alimentation", "Transport", "Loisirs", "Santé", "Autres"] },
-  pro:  { in: ["Ventes", "Prestations"], out: ["Loyer", "Salaires", "Matériel", "Marketing", "Impôts", "Autres"] }
+part: {
+in: ["Salaire", "Autres revenus"],
+out: ["Logement", "Alimentation", "Transport", "Loisirs", "Santé", "Autres"]
+},
+pro: {
+in: ["Ventes", "Prestations"],
+out: ["Loyer", "Salaires", "Matériel", "Marketing", "Impôts", "Autres"]
+}
 };
+
+/* DONNEES LOCALES */
+
 const KEY = "budget-app-v1";
-let S = { mode: "part", tx: [], budgets: {} };
-try { const r = localStorage.getItem(KEY); if (r) S = Object.assign(S, JSON.parse(r)); } catch (e) {}
-const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
+
+let S = {mode:"part",tx:[],budgets:{}};
+
+try {
+const r = localStorage.getItem(KEY);
+if(r) S = Object.assign(S,JSON.parse(r));
+} catch(e){}
+
+const save = () => {
+try {localStorage.setItem(KEY,JSON.stringify(S));}
+catch(e){}
+};
+
 const $ = id => document.getElementById(id);
-const fmt = n => n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " " + CONFIG.CURRENCY;
-const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const sum = (a, t) => a.filter(x => x.type === t).reduce((s, x) => s + x.amount, 0);
-const today = new Date().toISOString().slice(0, 10);
 
-function fillCats() {
-  $("cat").innerHTML = CATS[S.mode][$("type").value].map(c => "<option>" + c + "</option>").join("");
+const esc = s => String(s).replace(/[&<>"']/g,c=>({
+"&":"&amp;","<":"&lt;",">":"&gt;",
+'"':"&quot;","'":"&#39;"
+}[c]));
+
+const sum = (a,t) =>
+a.filter(x=>x.type===t).reduce((s,x)=>s+x.amount,0);
+
+const today = new Date().toISOString().slice(0,10);
+
+/* CATEGORIES DYNAMIQUES */
+
+function fillCats(){
+$("cat").innerHTML =
+CATS[S.mode][$("type").value]
+.map(c=>"<option>"+c+"</option>").join("");
 }
 
-function render() {
-  const m = CATS[S.mode], ym = $("ym").value;
-  $("logo").textContent = CONFIG.LOGO + " " + CONFIG.APP_NAME;
-  document.title = CONFIG.APP_NAME;
-  $("tag").textContent = CONFIG.TAGLINE;
-  $("bp").className = S.mode === "part" ? "on" : "";
-  $("bo").className = S.mode === "pro" ? "on" : "";
-  const tx = S.tx.filter(t => t.mode === S.mode && t.date.slice(0, 7) === ym).sort((a, b) => b.date.localeCompare(a.date));
-  const inc = sum(tx, "in"), out = sum(tx, "out");
-  $("inc").textContent = fmt(inc);
-  $("out").textContent = fmt(out);
-  $("bal").textContent = fmt(inc - out);
-  $("bal").style.color = inc - out < 0 ? "var(--exp)" : "var(--inc)";
+/* AFFICHAGE PRINCIPAL */
 
-  $("list").innerHTML = tx.length ? tx.map(t =>
-    '<div class="tx"><div class="m"><b>' + esc(t.cat) + '</b><small>' + esc(t.date) + (t.note ? " · " + esc(t.note) : "") +
-    '</small></div><div class="a" style="color:' + (t.type === "in" ? "var(--inc)" : "var(--exp)") + '">' +
-    (t.type === "in" ? "+" : "−") + fmt(t.amount) + '</div><button data-id="' + t.id + '" aria-label="Supprimer">✕</button></div>'
-  ).join("") : '<div class="mut">Aucune opération ce mois-ci.</div>';
+function render(){
 
-  $("buds").innerHTML = m.out.map(c => {
-    const spent = sum(tx.filter(t => t.cat === c), "out");
-    const lim = S.budgets[S.mode + "|" + c] || 0;
-    const pct = lim ? Math.min(100, spent / lim * 100) : 0;
-    const over = lim && spent > lim;
-    return '<div class="bud"><div class="h"><span>' + c + '<br><span class="mut">' + fmt(spent) + '</span></span>' +
-      '<input type="number" inputmode="decimal" min="0" placeholder="Budget" data-c="' + c + '" value="' + (lim || "") + '"></div>' +
-      '<div class="bar"><i class="' + (over ? "over" : "") + '" style="width:' + pct + '%"></i></div>' +
-      (over ? '<div class="warn">Dépassé de ' + fmt(spent - lim) + '</div>' : "") + '</div>';
-  }).join("");
+const m = CATS[S.mode];
+const ym = $("ym").value;
 
-  $("ptitle").textContent = "Premium · " + CONFIG.PREMIUM_PRICE;
-  $("ptext").textContent = CONFIG.PREMIUM_TEXT;
-  $("plink").href = "mailto:" + CONFIG.CONTACT + "?subject=" + encodeURIComponent("Premium " + CONFIG.APP_NAME);
+$("logo").textContent = CONFIG.LOGO+" "+CONFIG.APP_NAME;
+document.title = CONFIG.APP_NAME;
+$("tag").textContent = CONFIG.TAGLINE;
+
+$("bp").className = S.mode==="part"?"on":"";
+$("bo").className = S.mode==="pro"?"on":"";
+
+const tx = S.tx.filter(t=>
+t.mode===S.mode && t.date.slice(0,7)===ym
+).sort((a,b)=>b.date.localeCompare(a.date));
+
+const inc = sum(tx,"in");
+const out = sum(tx,"out");
+
+$("inc").textContent = fmt(inc);
+$("out").textContent = fmt(out);
+$("bal").textContent = fmt(inc-out);
+
+$("bal").style.color =
+inc-out<0?"var(--exp)":"var(--inc)";
+
+/* HISTORIQUE */
+
+$("list").innerHTML = tx.length
+? tx.map(t=>
+'<div class="tx">'+
+'<div class="m">'+
+'<b>'+esc(t.cat)+'</b>'+
+'<small>'+esc(t.date)+
+(t.note?" · "+esc(t.note):"")+
+'</small></div>'+
+'<div class="a" style="color:'+
+(t.type==="in"?"var(--inc)":"var(--exp)")+'">'+
+(t.type==="in"?"+":"−")+fmt(t.amount)+
+'</div>'+
+'<button data-id="'+esc(t.id)+
+'" aria-label="Supprimer">✕</button>'+
+'</div>'
+).join("")
+: '<div class="mut">Aucune opération ce mois-ci.</div>';
+
+/* BUDGETS */
+
+$("buds").innerHTML = m.out.map(c=>{
+
+const spent = sum(tx.filter(t=>t.cat===c),"out");
+const lim = S.budgets[S.mode+"|"+c]||0;
+const pct = lim?Math.min(100,spent/lim*100):0;
+const over = lim && spent>lim;
+
+return '<div class="bud">'+
+'<div class="h">'+
+'<span>'+esc(c)+'<br><span class="mut">'+fmt(spent)+'</span></span>'+
+'<input type="number" inputmode="decimal" min="0" '+
+'placeholder="Budget" data-c="'+esc(c)+'" value="'+(lim||"")+'">'+
+'</div>'+
+'<div class="bar"><i class="'+
+(over?"over":"")+'" style="width:'+pct+'%"></i></div>'+
+(over?'<div class="warn">Dépassé de '+fmt(spent-lim)+'</div>':"")+
+'</div>';
+
+}).join("");
+
+/* PREMIUM */
+
+$("ptitle").textContent =
+"Premium · "+CONFIG.PREMIUM_PRICE;
+
+$("ptext").textContent = CONFIG.PREMIUM_TEXT;
+
+$("plink").href =
+"mailto:"+CONFIG.CONTACT+
+"?subject="+encodeURIComponent("Premium "+CONFIG.APP_NAME);
 }
 
-$("bp").onclick = () => { S.mode = "part"; save(); fillCats(); render(); };
-$("bo").onclick = () => { S.mode = "pro"; save(); fillCats(); render(); };
+/* NAVIGATION */
+
+$("bp").onclick = ()=>{
+S.mode="part";
+save();fillCats();render();
+};
+
+$("bo").onclick = ()=>{
+S.mode="pro";
+save();fillCats();render();
+};
+
 $("type").onchange = fillCats;
 $("ym").onchange = render;
-$("add").onclick = () => {
-  const amount = parseFloat($("amt").value);
-  if (!(amount > 0)) { $("err").textContent = "Entrez un montant supérieur à 0."; return; }
-  $("err").textContent = "";
-  S.tx.push({ id: Date.now() + "" + Math.floor(Math.random() * 1000), mode: S.mode, type: $("type").value, amount, cat: $("cat").value, date: $("date").value || today, note: $("note").value.trim() });
-  $("amt").value = ""; $("note").value = "";
-  save(); render();
-};
-$("list").onclick = e => {
-  const id = e.target.dataset && e.target.dataset.id;
-  if (!id) return;
-  S.tx = S.tx.filter(t => t.id !== id);
-  save(); render();
-};
-$("buds").onchange = e => {
-  const c = e.target.dataset && e.target.dataset.c;
-  if (!c) return;
-  S.budgets[S.mode + "|" + c] = parseFloat(e.target.value) || 0;
-  save(); render();
+
+/* AJOUTER UNE OPERATION */
+
+$("add").onclick = ()=>{
+
+const amount = parseFloat($("amt").value);
+
+if(!(amount>0)){
+$("err").textContent="Entrez un montant supérieur à 0.";
+return;
+}
+
+$("err").textContent="";
+
+S.tx.push({
+id:Date.now()+""+Math.floor(Math.random()*1000),
+mode:S.mode,
+type:$("type").value,
+amount,
+cat:$("cat").value,
+date:$("date").value||today,
+note:$("note").value.trim()
+});
+
+$("amt").value="";
+$("note").value="";
+
+save();
+render();
 };
 
-$("ym").value = today.slice(0, 7);
-$("date").value = today;
+/* SUPPRESSION */
+
+$("list").onclick = e=>{
+const id = e.target.dataset && e.target.dataset.id;
+if(!id)return;
+
+S.tx=S.tx.filter(t=>t.id!==id);
+save();
+render();
+};
+
+/* MODIFICATION DES BUDGETS */
+
+$("buds").onchange = e=>{
+
+const c=e.target.dataset && e.target.dataset.c;
+if(!c)return;
+
+S.budgets[S.mode+"|"+c]=parseFloat(e.target.value)||0;
+
+save();
+render();
+};
+
+/* INITIALISATION */
+
+$("ym").value=today.slice(0,7);
+$("date").value=today;
+
 fillCats();
 render();
+
 </script>
-<p style="text-align:center;padding:20px;"><a href="privacy.html" style="color:#2dd4bf;">Confidentialité</a></p>
+
+<p style="text-align:center;padding:20px;">
+<a href="privacy.html" style="color:#2dd4bf;">Confidentialité</a>
+</p>
+
 </body>
 </html>
