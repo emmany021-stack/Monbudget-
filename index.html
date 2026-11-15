@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,231 +11,65 @@
 <link rel="apple-touch-icon" href="/Monbudget-/icons/icon-192.png">
 
 <style>
-:root{
---bg:#f6f7f9;
---card:#fff;
---tx:#14181f;
---mut:#6b7280;
---line:#e5e7eb;
---acc:#0f766e;
---onacc:#fff;
---inc:#15803d;
---exp:#b91c1c;
-color-scheme:light;
-box-sizing:border-box;
-padding-top:env(safe-area-inset-top,0px);
-padding-bottom:env(safe-area-inset-bottom,0px)
-}
-
-@media(prefers-color-scheme:dark){
-:root:not([data-theme="light"]){
---bg:#0f1318;
---card:#181e26;
---tx:#eef1f5;
---mut:#9aa4b2;
---line:#28303b;
---acc:#2dd4bf;
---onacc:#06201c;
---inc:#4ade80;
---exp:#f87171;
-color-scheme:dark
-}
-}
-
-:root[data-theme="dark"]{
---bg:#0f1318;
---card:#181e26;
---tx:#eef1f5;
---mut:#9aa4b2;
---line:#28303b;
---acc:#2dd4bf;
---onacc:#06201c;
---inc:#4ade80;
---exp:#f87171;
-color-scheme:dark
-}
-
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
+:root{--bg:#f6f7f9;--card:#fff;--tx:#14181f;--mut:#6b7280;--line:#e5e7eb;--acc:#0f766e;--onacc:#fff;--inc:#15803d;--exp:#b91c1c;color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1318;--card:#181e26;--tx:#eef1f5;--mut:#9aa4b2;--line:#28303b;--acc:#2dd4bf;--onacc:#06201c;--inc:#4ade80;--exp:#f87171;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1318;--card:#181e26;--tx:#eef1f5;--mut:#9aa4b2;--line:#28303b;--acc:#2dd4bf;--onacc:#06201c;--inc:#4ade80;--exp:#f87171;color-scheme:dark}
 *{box-sizing:border-box}
-
-body{
-margin:0;
-background:var(--bg);
-color:var(--tx);
-font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif
-}
-
-main{
-max-width:640px;
-margin:0 auto;
-padding:16px
-}
-
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-top:env(safe-area-inset-top,0px);padding-bottom:calc(90px + env(safe-area-inset-bottom,0px))}
+main{max-width:640px;margin:0 auto;padding:16px}
 h1{font-size:22px;margin:4px 0 12px}
 h2{font-size:16px;margin:0 0 10px}
-
-.card{
-background:var(--card);
-border:1px solid var(--line);
-border-radius:14px;
-padding:14px;
-margin-bottom:14px
-}
-
-.row{
-display:flex;
-gap:8px;
-flex-wrap:wrap
-}
-
-.row>*{
-flex:1 1 120px;
-min-width:0
-}
-
-input,select,button{
-font:inherit;
-color:var(--tx);
-background:var(--bg);
-border:1px solid var(--line);
-border-radius:10px;
-padding:10px
-}
-
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row>*{flex:1 1 120px;min-width:0}
+input,select,button{font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px}
 button{cursor:pointer}
-
-button.p{
-background:var(--acc);
-color:var(--onacc);
-border-color:var(--acc);
-font-weight:600
-}
-
-.seg{
-display:flex;
-gap:6px;
-margin-bottom:12px
-}
-
+button.p{background:var(--acc);color:var(--onacc);border-color:var(--acc);font-weight:600}
+.seg{display:flex;gap:6px;margin-bottom:12px}
 .seg button{flex:1}
-
-.seg button.on{
-background:var(--acc);
-color:var(--onacc);
-border-color:var(--acc);
-font-weight:600
-}
-
-.kpis{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:8px
-}
-
-.kpi{
-background:var(--card);
-border:1px solid var(--line);
-border-radius:14px;
-padding:10px
-}
-
-.kpi small{
-color:var(--mut);
-display:block
-}
-
-.kpi b{
-font-size:15px;
-word-break:break-word
-}
-
-.tx{
-display:flex;
-align-items:center;
-gap:8px;
-padding:8px 0;
-border-top:1px solid var(--line)
-}
-
+.seg button.on{background:var(--acc);color:var(--onacc);border-color:var(--acc);font-weight:600}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px}
+.kpi small{color:var(--mut);display:block}
+.kpi b{font-size:15px;word-break:break-word}
+.tx{display:flex;align-items:center;gap:8px;padding:8px 0;border-top:1px solid var(--line)}
 .tx:first-of-type{border-top:0}
-
-.tx .m{
-flex:1;
-min-width:0
-}
-
-.tx .m small{
-color:var(--mut);
-display:block;
-overflow:hidden;
-text-overflow:ellipsis;
-white-space:nowrap
-}
-
+.tx .m{flex:1;min-width:0}
+.tx .m small{color:var(--mut);display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .tx .a{font-weight:600}
 .tx button{padding:4px 9px}
-
 .bud{margin-bottom:12px}
-
-.bud .h{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:8px
-}
-
-.bud input{
-width:110px;
-padding:6px 8px
-}
-
-.bar{
-height:8px;
-background:var(--line);
-border-radius:6px;
-overflow:hidden;
-margin-top:6px
-}
-
-.bar i{
-display:block;
-height:100%;
-background:var(--acc)
-}
-
+.bud .h{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.bud input{width:110px;padding:6px 8px}
+.bar{height:8px;background:var(--line);border-radius:6px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--acc)}
 .bar i.over{background:var(--exp)}
+.warn{color:var(--exp);font-size:13px}
+.mut{color:var(--mut);font-size:13px}
+a.btn{display:block;text-align:center;text-decoration:none;background:var(--acc);color:var(--onacc);padding:10px;border-radius:10px;font-weight:600;margin-top:10px}
 
-.warn{
-color:var(--exp);
-font-size:13px
-}
+/* Bloc Premium unique */
+#premium-pay{border:2px solid var(--acc)}
+#premium-pay .num{font-size:22px;font-weight:700;text-align:center;margin:12px 0;color:var(--acc)}
+#premium-pay ul{padding-left:20px;margin:8px 0}
+#premium-pay p{margin:8px 0}
 
-.mut{
-color:var(--mut);
-font-size:13px
-}
+/* Sauvegarde */
+.backup button{display:block;width:100%;margin-top:10px;font-weight:600}
 
-a.btn{
-display:block;
-text-align:center;
-text-decoration:none;
-background:var(--acc);
-color:var(--onacc);
-padding:10px;
-border-radius:10px;
-font-weight:600;
-margin-top:10px
-}
+/* Lien confidentialité */
+.foot{text-align:center;padding:10px 0 20px}
+.foot a{color:var(--acc)}
 
+/* Bouton flottant */
+#mbPremiumFloating{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:99999;background:var(--acc);color:var(--onacc);border:0;border-radius:30px;padding:12px 18px;font-weight:800;box-shadow:0 5px 20px rgba(0,0,0,.3)}
 </style>
 </head>
 
 <body>
-
 <main>
 
 <h1 id="logo"></h1>
-
 <p class="mut" id="tag" style="margin:-6px 0 12px"></p>
 
 <div class="seg">
@@ -251,864 +82,179 @@ margin-top:10px
 </div>
 
 <div class="kpis" style="margin-bottom:14px">
-
-<div class="kpi">
-<small>Revenus</small>
-<b id="inc"></b>
-</div>
-
-<div class="kpi">
-<small>Dépenses</small>
-<b id="out"></b>
-</div>
-
-<div class="kpi">
-<small>Solde</small>
-<b id="bal"></b>
-</div>
-
+<div class="kpi"><small>Revenus</small><b id="inc"></b></div>
+<div class="kpi"><small>Dépenses</small><b id="out"></b></div>
+<div class="kpi"><small>Solde</small><b id="bal"></b></div>
 </div>
 
 <div class="card">
-
 <h2>Ajouter une opération</h2>
-
 <div class="row">
-
 <select id="type">
 <option value="out">Dépense</option>
 <option value="in">Revenu</option>
 </select>
-
-<input
-id="amt"
-type="number"
-inputmode="decimal"
-min="0"
-step="0.01"
-placeholder="Montant"
->
-
+<input id="amt" type="number" inputmode="decimal" min="0" step="0.01" placeholder="Montant">
 </div>
-
 <div class="row" style="margin-top:8px">
-
 <select id="cat"></select>
-
 <input id="date" type="date">
-
 </div>
-
 <div class="row" style="margin-top:8px">
-
-<input
-id="note"
-type="text"
-placeholder="Note (facultatif)"
-maxlength="80"
->
-
-<button class="p" id="add" style="flex:0 0 auto">
-Ajouter
-</button>
-
+<input id="note" type="text" placeholder="Note (facultatif)" maxlength="80">
+<button class="p" id="add" style="flex:0 0 auto">Ajouter</button>
 </div>
-
 <div id="err" class="warn"></div>
-
 </div>
 
 <div class="card">
-
 <h2>Opérations du mois</h2>
-
 <div id="list"></div>
-
 </div>
 
 <div class="card">
-
 <h2>Budgets par catégorie</h2>
-
 <div id="buds"></div>
-
 </div>
 
-<div class="card">
-
-<h2 id="ptitle"></h2>
-
-<div class="mut" id="ptext"></div>
-
-<a class="btn" id="plink" href="#">
-Passer à Premium
-</a>
-
+<div class="card" id="premium-pay">
+<h2>👑 Mon Budget Premium · 7,99 $/mois</h2>
+<ul>
+<li>Export des données</li>
+<li>Rapports avancés</li>
+<li>Plusieurs comptes</li>
+<li>Expérience sans publicité (prévue)</li>
+</ul>
+<p><b>Comment payer par M-Pesa :</b></p>
+<p>1. Envoie 7,99 $ par M-Pesa au numéro :</p>
+<div class="num">+243 81 60 36 548</div>
+<p class="mut" style="text-align:center">Nom du compte : Gray Muyamba</p>
+<p>2. Écris-nous la preuve de paiement à <b>monbudgetapp.service@gmail.com</b> avec ton adresse e-mail.</p>
+<p>3. Ton Premium est activé rapidement après vérification.</p>
 </div>
 
-<p class="mut" style="text-align:center">
-Vos données restent sur cet appareil.
-</p>
+<div class="card backup">
+<h2>🛡️ Sauvegarde des données</h2>
+<p class="mut">Télécharge une copie de tes données pour les conserver et les restaurer si nécessaire.</p>
+<button type="button" id="mbExport">Télécharger ma sauvegarde</button>
+<button type="button" id="mbImport">Restaurer une sauvegarde</button>
+<input type="file" id="mbBackupFile" accept=".json,application/json" hidden>
+<p id="mbBackupStatus" class="mut" role="status"></p>
+</div>
+
+<p class="mut" style="text-align:center">Vos données restent sur cet appareil.</p>
+
+<p class="foot"><a href="privacy.html">Confidentialité</a></p>
 
 </main>
 
+<button id="mbPremiumFloating" type="button">👑 Premium</button>
+
 <script>
-
-/* CONFIGURATION MONBUDGET.COM */
-
-const CONFIG = {
-
-TAGLINE: "Ton portefeuille actif",
-
-APP_NAME: "Mon Budget.com",
-
-LOGO: "💰",
-
-CURRENCY: "USD",
-
-PREMIUM_PRICE: "7,99 $/mois",
-
-PREMIUM_TEXT:
-"Export des données, rapports avancés, plusieurs comptes.",
-
-CONTACT: "monbudgetapp.service@gmail.com"
-
-};
-
-
-/* FORMAT MONETAIRE USD */
-
-const moneyFormatter = new Intl.NumberFormat("en-US", {
-
-style: "currency",
-
-currency: CONFIG.CURRENCY
-
+const CONFIG={TAGLINE:"Ton portefeuille actif",APP_NAME:"Mon Budget.com",LOGO:"💰",CURRENCY:"USD"};
+const moneyFormatter=new Intl.NumberFormat("en-US",{style:"currency",currency:CONFIG.CURRENCY});
+const fmt=n=>moneyFormatter.format(n);
+const CATS={part:{in:["Salaire","Autres revenus"],out:["Logement","Alimentation","Transport","Loisirs","Santé","Autres"]},pro:{in:["Ventes","Prestations"],out:["Loyer","Salaires","Matériel","Marketing","Impôts","Autres"]}};
+const KEY="budget-app-v1";
+let S={mode:"part",tx:[],budgets:{}};
+try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r))}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const sum=(a,t)=>a.filter(x=>x.type===t).reduce((s,x)=>s+x.amount,0);
+const today=new Date().toISOString().slice(0,10);
+function fillCats(){$("cat").innerHTML=CATS[S.mode][$("type").value].map(c=>"<option>"+c+"</option>").join("")}
+function render(){
+const m=CATS[S.mode];const ym=$("ym").value;
+$("logo").textContent=CONFIG.LOGO+" "+CONFIG.APP_NAME;
+document.title=CONFIG.APP_NAME;
+$("tag").textContent=CONFIG.TAGLINE;
+$("bp").className=S.mode==="part"?"on":"";
+$("bo").className=S.mode==="pro"?"on":"";
+const tx=S.tx.filter(t=>t.mode===S.mode&&t.date.slice(0,7)===ym).sort((a,b)=>b.date.localeCompare(a.date));
+const inc=sum(tx,"in");const out=sum(tx,"out");
+$("inc").textContent=fmt(inc);$("out").textContent=fmt(out);$("bal").textContent=fmt(inc-out);
+$("bal").style.color=inc-out<0?"var(--exp)":"var(--inc)";
+$("list").innerHTML=tx.length?tx.map(t=>'<div class="tx"><div class="m"><b>'+esc(t.cat)+'</b><small>'+esc(t.date)+(t.note?" · "+esc(t.note):"")+'</small></div><div class="a" style="color:'+(t.type==="in"?"var(--inc)":"var(--exp)")+'">'+(t.type==="in"?"+":"−")+fmt(t.amount)+'</div><button data-id="'+esc(t.id)+'" aria-label="Supprimer">✕</button></div>').join(""):'<div class="mut">Aucune opération ce mois-ci.</div>';
+$("buds").innerHTML=m.out.map(c=>{const spent=sum(tx.filter(t=>t.cat===c),"out");const lim=S.budgets[S.mode+"|"+c]||0;const pct=lim?Math.min(100,spent/lim*100):0;const over=lim&&spent>lim;return '<div class="bud"><div class="h"><span>'+esc(c)+'<br><span class="mut">'+fmt(spent)+'</span></span><input type="number" inputmode="decimal" min="0" placeholder="Budget" data-c="'+esc(c)+'" value="'+(lim||"")+'"></div><div class="bar"><i class="'+(over?"over":"")+'" style="width:'+pct+'%"></i></div>'+(over?'<div class="warn">Dépassé de '+fmt(spent-lim)+'</div>':"")+'</div>'}).join("");
+}
+$("bp").onclick=()=>{S.mode="part";save();fillCats();render()};
+$("bo").onclick=()=>{S.mode="pro";save();fillCats();render()};
+$("type").onchange=fillCats;
+$("ym").onchange=render;
+$("add").onclick=()=>{const amount=parseFloat($("amt").value);if(!(amount>0)){$("err").textContent="Entrez un montant supérieur à 0.";return}$("err").textContent="";S.tx.push({id:Date.now()+""+Math.floor(Math.random()*1000),mode:S.mode,type:$("type").value,amount:amount,cat:$("cat").value,date:$("date").value||today,note:$("note").value.trim()});$("amt").value="";$("note").value="";save();render()};
+$("list").onclick=e=>{const id=e.target.dataset&&e.target.dataset.id;if(!id)return;S.tx=S.tx.filter(t=>t.id!==id);save();render()};
+$("buds").onchange=e=>{const c=e.target.dataset&&e.target.dataset.c;if(!c)return;S.budgets[S.mode+"|"+c]=parseFloat(e.target.value)||0;save();render()};
+$("ym").value=today.slice(0,7);
+$("date").value=today;
+fillCats();
+render();
+</script>
+/* Bouton flottant : fait défiler vers le bloc Premium */
+document.getElementById("mbPremiumFloating").addEventListener("click",function(){
+  var p=document.getElementById("premium-pay");
+  if(p){p.scrollIntoView({behavior:"smooth",block:"center"})}
 });
 
-const fmt = n => moneyFormatter.format(n);
-
-
-/* CATEGORIES */
-
-const CATS = {
-
-part: {
-
-in: ["Salaire", "Autres revenus"],
-
-out: [
-"Logement",
-"Alimentation",
-"Transport",
-"Loisirs",
-"Santé",
-"Autres"
-]
-
-},
-
-pro: {
-
-in: ["Ventes", "Prestations"],
-
-out: [
-"Loyer",
-"Salaires",
-"Matériel",
-"Marketing",
-"Impôts",
-"Autres"
-]
-
-}
-
-};
-
-
-/* SAUVEGARDE DES DONNEES */
-
-const KEY = "budget-app-v1";
-
-let S = {
-mode: "part",
-tx: [],
-budgets: {}
-};
-
-try {
-
-const r = localStorage.getItem(KEY);
-
-if (r) S = Object.assign(S, JSON.parse(r));
-
-} catch(e) {}
-
-
-const save = () => {
-
-try {
-
-localStorage.setItem(KEY, JSON.stringify(S));
-
-} catch(e) {}
-
-};
-
-
-const $ = id => document.getElementById(id);
-
-
-/* SECURITE DES TEXTES */
-
-const esc = s => String(s).replace(/[&<>"']/g, c => ({
-
-"&": "&amp;",
-"<": "&lt;",
-">": "&gt;",
-'"': "&quot;",
-"'": "&#39;"
-
-}[c]));
-
-
-/* CALCULS */
-
-const sum = (a,t) =>
-
-a.filter(x => x.type === t)
-
-.reduce((s,x) => s + x.amount, 0);
-
-
-const today = new Date().toISOString().slice(0,10);
-
-
-/* CATEGORIES DYNAMIQUES */
-
-function fillCats() {
-
-$("cat").innerHTML =
-
-CATS[S.mode][$("type").value]
-
-.map(c => "<option>" + c + "</option>")
-
-.join("");
-
-}
-
-
-/* AFFICHAGE PRINCIPAL */
-
-function render() {
-
-const m = CATS[S.mode];
-
-const ym = $("ym").value;
-
-
-$("logo").textContent =
-CONFIG.LOGO + " " + CONFIG.APP_NAME;
-
-document.title = CONFIG.APP_NAME;
-
-$("tag").textContent = CONFIG.TAGLINE;
-
-
-$("bp").className =
-S.mode === "part" ? "on" : "";
-
-$("bo").className =
-S.mode === "pro" ? "on" : "";
-
-
-const tx = S.tx
-
-.filter(t =>
-t.mode === S.mode &&
-t.date.slice(0,7) === ym
-)
-
-.sort((a,b) => b.date.localeCompare(a.date));
-
-
-const inc = sum(tx,"in");
-
-const out = sum(tx,"out");
-
-
-$("inc").textContent = fmt(inc);
-
-$("out").textContent = fmt(out);
-
-$("bal").textContent = fmt(inc-out);
-
-
-$("bal").style.color =
-inc-out < 0 ? "var(--exp)" : "var(--inc)";
-
-
-/* HISTORIQUE */
-
-$("list").innerHTML = tx.length
-
-? tx.map(t =>
-
-'<div class="tx">' +
-
-'<div class="m">' +
-
-'<b>' + esc(t.cat) + '</b>' +
-
-'<small>' + esc(t.date) +
-
-(t.note ? " · " + esc(t.note) : "") +
-
-'</small></div>' +
-
-'<div class="a" style="color:' +
-
-(t.type === "in" ? "var(--inc)" : "var(--exp)") +
-
-'">' +
-
-(t.type === "in" ? "+" : "−") +
-
-fmt(t.amount) +
-
-'</div>' +
-
-'<button data-id="' + esc(t.id) +
-
-'" aria-label="Supprimer">✕</button>' +
-
-'</div>'
-
-).join("")
-
-: '<div class="mut">Aucune opération ce mois-ci.</div>';
-
-
-/* BUDGETS PAR CATEGORIE */
-
-$("buds").innerHTML = m.out.map(c => {
-
-const spent = sum(
-tx.filter(t => t.cat === c),
-"out"
-);
-
-const lim = S.budgets[S.mode + "|" + c] || 0;
-
-const pct = lim
-? Math.min(100, spent / lim * 100)
-: 0;
-
-const over = lim && spent > lim;
-
-
-return '<div class="bud">' +
-
-'<div class="h">' +
-
-'<span>' + esc(c) +
-
-'<br><span class="mut">' +
-
-fmt(spent) +
-
-'</span></span>' +
-
-'<input type="number" inputmode="decimal" min="0" ' +
-
-'placeholder="Budget" data-c="' + esc(c) +
-
-'" value="' + (lim || "") + '">' +
-
-'</div>' +
-
-'<div class="bar"><i class="' +
-
-(over ? "over" : "") +
-
-'" style="width:' + pct + '%"></i></div>' +
-
-(over
-
-? '<div class="warn">Dépassé de ' +
-
-fmt(spent-lim) +
-
-'</div>'
-
-: "") +
-
-'</div>';
-
-}).join("");
-
-
-/* PREMIUM */
-
-$("ptitle").textContent =
-
-"Premium · " + CONFIG.PREMIUM_PRICE;
-
-$("ptext").textContent = CONFIG.PREMIUM_TEXT;
-
-
-$("plink").href = "#premium-pay";
-
-
-}
-
-
-/* NAVIGATION */
-
-$("bp").onclick = () => {
-
-S.mode = "part";
-
-save();
-
-fillCats();
-
-render();
-
-};
-
-
-$("bo").onclick = () => {
-
-S.mode = "pro";
-
-save();
-
-fillCats();
-
-render();
-
-};
-
-
-$("type").onchange = fillCats;
-
-$("ym").onchange = render;
-
-
-/* AJOUTER UNE OPERATION */
-
-$("add").onclick = () => {
-
-const amount = parseFloat($("amt").value);
-
-
-if (!(amount > 0)) {
-
-$("err").textContent =
-"Entrez un montant supérieur à 0.";
-
-return;
-
-}
-
-
-$("err").textContent = "";
-
-
-S.tx.push({
-
-id: Date.now() + "" +
-Math.floor(Math.random() * 1000),
-
-mode: S.mode,
-
-type: $("type").value,
-
-amount: amount,
-
-cat: $("cat").value,
-
-date: $("date").value || today,
-
-note: $("note").value.trim()
-
-});
-
-
-$("amt").value = "";
-
-$("note").value = "";
-
-
-save();
-
-render();
-
-};
-
-
-/* SUPPRESSION */
-
-$("list").onclick = e => {
-
-const id =
-e.target.dataset && e.target.dataset.id;
-
-if (!id) return;
-
-
-S.tx = S.tx.filter(t => t.id !== id);
-
-save();
-
-render();
-
-};
-
-
-/* MODIFICATION DES BUDGETS */
-
-$("buds").onchange = e => {
-
-const c =
-e.target.dataset && e.target.dataset.c;
-
-if (!c) return;
-
-
-S.budgets[S.mode + "|" + c] =
-parseFloat(e.target.value) || 0;
-
-
-save();
-
-render();
-
-};
-
-
-/* INITIALISATION */
-
-$("ym").value = today.slice(0,7);
-
-$("date").value = today;
-
-fillCats();
-
-render();
-
-</script>
-
-
-<p style="text-align:center;padding:20px;">
-
-<a href="privacy.html" style="color:#2dd4bf;">
-Confidentialité
-  <div id="premium-pay" style="max-width:420px;margin:24px auto;padding:16px;border:2px solid #16a34a;border-radius:12px;text-align:center;font-family:sans-serif;">
-  <h3>Passer à Premium : 7,99 $</h3>
-  <p>Envoie 7,99 $ par M-Pesa au numéro :</p>
-  <p style="font-size:20px;font-weight:bold;">+243 81 60 36 548</p>
-  <p>Nom du compte : Gray Muyamba</p>
-  <p>Ensuite, écris-nous la preuve de paiement à <b>monbudgetapp.service@gmail.com</b> avec ton adresse e-mail. Ton Premium sera activé rapidement.</p>
-</div>
-
-</a>
-
-</p>
-
-
-<!-- MONBUDGET PREMIUM -->
-<style>
-  .mb-premium {
-    max-width: 650px;
-    margin: 30px auto;
-    padding: 25px;
-    border-radius: 22px;
-    background: linear-gradient(145deg, #101b35, #080d19);
-    color: white;
-    text-align: center;
-    border: 1px solid #c9a34a;
-    font-family: Arial, sans-serif;
-  }
-
-  .mb-premium h2 {
-    color: #e5bd62;
-    font-size: 28px;
-  }
-
-  .mb-premium .price {
-    font-size: 38px;
-    font-weight: bold;
-    color: #f1cd75;
-    margin: 20px 0;
-  }
-
-  .mb-premium ul {
-    text-align: left;
-    line-height: 2;
-    padding-left: 25px;
-  }
-
-  .mb-premium button {
-    background: #d5ad55;
-    color: #101828;
-    border: none;
-    padding: 14px 24px;
-    border-radius: 12px;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 12px;
-  }
-
-  .mb-premium .notice {
-    display: none;
-    margin-top: 18px;
-    padding: 12px;
-    border: 1px solid #d5ad55;
-    border-radius: 10px;
-    color: #f1cd75;
-  }
-</style>
-
-<section class="mb-premium">
-  <div style="font-size:42px;">👑</div>
-  <h2>MONBUDGET PREMIUM</h2>
-  <p>Take control of your financial future.</p>
-
-  <div class="price">
-    7,99 $ <span style="font-size:15px;">/ mois</span>
-  </div>
-
-  <ul>
-    <li>Gestion avancée de ton budget</li>
-    <li>Suivi détaillé des revenus et dépenses</li>
-    <li>Outils de planification financière</li>
-    <li>Fonctionnalités Premium exclusives</li>
-    <li>Expérience sans publicité (prévue)</li>
-  </ul>
-
-  <button type="button" id="mbPremiumButton">
-    Découvrir Premium
-  </button>
-
-  <div class="notice" id="mbPremiumNotice" role="status">
-    Les abonnements et paiements seront bientôt disponibles.
-    Aucun paiement n'a été effectué.
-  </div>
-</section>
-
-<script>
-  (function () {
-    const button = document.getElementById("mbPremiumButton");
-    const notice = document.getElementById("mbPremiumNotice");
-
-    if (button && notice) {
-      button.addEventListener("click", function () {
-        notice.style.display =
-          notice.style.display === "block" ? "none" : "block";
-      });
+/* Sauvegarde et restauration */
+(function(){
+  var exportBtn=document.getElementById("mbExport");
+  var importBtn=document.getElementById("mbImport");
+  var fileInput=document.getElementById("mbBackupFile");
+  var status=document.getElementById("mbBackupStatus");
+  if(!exportBtn||!importBtn||!fileInput||!status)return;
+
+  exportBtn.addEventListener("click",function(){
+    var backup={app:"MONBUDGET",version:1,date:new Date().toISOString(),data:{}};
+    for(var i=0;i<localStorage.length;i++){
+      var key=localStorage.key(i);
+      backup.data[key]=localStorage.getItem(key);
     }
-  })();
-</script>
-<!-- FIN MONBUDGET PREMIUM -->
-</body>
-</html>
-<!-- Le reste de ton code MONBUDGET -->
-
-<script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/Monbudget-/sw.js")
-      .catch(error => console.error("PWA:", error));
-  });
-}
-</script>
-
-
-<!-- MONBUDGET PREMIUM FLOATING BUTTON -->
-<style>
-  #mbPremiumFloating {
-    position: fixed;
-    right: 18px;
-    bottom: 22px;
-    z-index: 99999;
-    background: linear-gradient(135deg, #f1cd75, #c49a3d);
-    color: #101828;
-    border: 2px solid #fff0c2;
-    border-radius: 30px;
-    padding: 13px 20px;
-    font-size: 15px;
-    font-weight: 800;
-    box-shadow: 0 5px 20px rgba(0,0,0,.3);
-    cursor: pointer;
-  }
-</style>
-
-<button id="mbPremiumFloating" type="button">
-  👑 Premium
-</button>
-
-<script>
-  document.getElementById("mbPremiumFloating")
-    .addEventListener("click", function () {
-      const premium = document.querySelector(".mb-premium");
-
-      if (premium) {
-        premium.scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
-      }
-    });
-</script>
-<!-- END MONBUDGET PREMIUM FLOATING BUTTON -->
-
-<!-- MONBUDGET BACKUP SYSTEM -->
-<style>
-  .mb-backup {
-    max-width: 650px;
-    margin: 25px auto;
-    padding: 22px;
-    border-radius: 18px;
-    background: #101b35;
-    color: white;
-    border: 1px solid #c9a34a;
-    font-family: Arial, sans-serif;
-  }
-
-  .mb-backup h2 {
-    color: #e5bd62;
-  }
-
-  .mb-backup button {
-    display: block;
-    width: 100%;
-    padding: 13px;
-    margin-top: 12px;
-    border: 0;
-    border-radius: 10px;
-    background: #d5ad55;
-    color: #101828;
-    font-weight: bold;
-    font-size: 15px;
-  }
-
-  .mb-backup p {
-    line-height: 1.5;
-  }
-</style>
-
-<section class="mb-backup">
-  <h2>🛡️ Sauvegarde des données</h2>
-  <p>
-    Télécharge une copie de tes données pour les conserver
-    et les restaurer si nécessaire.
-  </p>
-
-  <button type="button" id="mbExport">
-    Télécharger ma sauvegarde
-  </button>
-
-  <button type="button" id="mbImport">
-    Restaurer une sauvegarde
-  </button>
-
-  <input
-    type="file"
-    id="mbBackupFile"
-    accept=".json,application/json"
-    hidden
-  >
-
-  <p id="mbBackupStatus" role="status"></p>
-</section>
-
-<script>
-(function () {
-  const exportBtn = document.getElementById("mbExport");
-  const importBtn = document.getElementById("mbImport");
-  const fileInput = document.getElementById("mbBackupFile");
-  const status = document.getElementById("mbBackupStatus");
-
-  if (!exportBtn || !importBtn || !fileInput || !status) return;
-
-  exportBtn.addEventListener("click", function () {
-    const backup = {
-      app: "MONBUDGET",
-      version: 1,
-      date: new Date().toISOString(),
-      data: {}
-    };
-
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      backup.data[key] = localStorage.getItem(key);
-    }
-
-    const blob = new Blob(
-      [JSON.stringify(backup, null, 2)],
-      { type: "application/json" }
-    );
-
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "monbudget-sauvegarde.json";
+    var blob=new Blob([JSON.stringify(backup,null,2)],{type:"application/json"});
+    var url=URL.createObjectURL(blob);
+    var link=document.createElement("a");
+    link.href=url;
+    link.download="monbudget-sauvegarde.json";
     link.click();
     URL.revokeObjectURL(url);
-
-    status.textContent = "Sauvegarde téléchargée.";
+    status.textContent="Sauvegarde téléchargée.";
   });
 
-  importBtn.addEventListener("click", function () {
-    fileInput.click();
-  });
+  importBtn.addEventListener("click",function(){fileInput.click()});
 
-  fileInput.addEventListener("change", async function () {
-    const file = fileInput.files[0];
-    if (!file) return;
-
-    try {
-      const backup = JSON.parse(await file.text());
-
-      if (
-        backup.app !== "MONBUDGET" ||
-        !backup.data ||
-        typeof backup.data !== "object" ||
-        Array.isArray(backup.data)
-      ) {
+  fileInput.addEventListener("change",async function(){
+    var file=fileInput.files[0];
+    if(!file)return;
+    try{
+      var backup=JSON.parse(await file.text());
+      if(backup.app!=="MONBUDGET"||!backup.data||typeof backup.data!=="object"||Array.isArray(backup.data)){
         throw new Error("Fichier invalide");
       }
-
-      if (!confirm(
-        "La restauration remplacera les données locales portant les mêmes clés. Continuer ?"
-      )) return;
-
-      for (const [key, value] of Object.entries(backup.data)) {
-        if (typeof value !== "string") {
-          throw new Error("Données invalides");
-        }
-      }
-
-      for (const [key, value] of Object.entries(backup.data)) {
-        localStorage.setItem(key, value);
-      }
-
+      if(!confirm("La restauration remplacera les données locales portant les mêmes clés. Continuer ?"))return;
+      Object.keys(backup.data).forEach(function(k){
+        if(typeof backup.data[k]!=="string")throw new Error("Données invalides");
+      });
+      Object.keys(backup.data).forEach(function(k){
+        localStorage.setItem(k,backup.data[k]);
+      });
       alert("Sauvegarde restaurée. MONBUDGET va se recharger.");
       location.reload();
-
-    } catch (error) {
-      status.textContent =
-        "Impossible de restaurer ce fichier. Vérifie la sauvegarde.";
-    } finally {
-      fileInput.value = "";
+    }catch(error){
+      status.textContent="Impossible de restaurer ce fichier. Vérifie la sauvegarde.";
+    }finally{
+      fileInput.value="";
     }
   });
 })();
+
+/* Mode hors ligne (PWA) */
+if("serviceWorker" in navigator){
+  window.addEventListener("load",function(){
+    navigator.serviceWorker.register("/Monbudget-/sw.js").catch(function(e){console.error("PWA:",e)});
+  });
+}
 </script>
-<!-- END MONBUDGET BACKUP SYSTEM -->
+
 </body>
 </html>
+
