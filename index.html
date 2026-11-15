@@ -813,6 +813,102 @@ Confidentialité
 
 </p>
 
+
+<!-- MONBUDGET PREMIUM -->
+<style>
+  .mb-premium {
+    max-width: 650px;
+    margin: 30px auto;
+    padding: 25px;
+    border-radius: 22px;
+    background: linear-gradient(145deg, #101b35, #080d19);
+    color: white;
+    text-align: center;
+    border: 1px solid #c9a34a;
+    font-family: Arial, sans-serif;
+  }
+
+  .mb-premium h2 {
+    color: #e5bd62;
+    font-size: 28px;
+  }
+
+  .mb-premium .price {
+    font-size: 38px;
+    font-weight: bold;
+    color: #f1cd75;
+    margin: 20px 0;
+  }
+
+  .mb-premium ul {
+    text-align: left;
+    line-height: 2;
+    padding-left: 25px;
+  }
+
+  .mb-premium button {
+    background: #d5ad55;
+    color: #101828;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 12px;
+  }
+
+  .mb-premium .notice {
+    display: none;
+    margin-top: 18px;
+    padding: 12px;
+    border: 1px solid #d5ad55;
+    border-radius: 10px;
+    color: #f1cd75;
+  }
+</style>
+
+<section class="mb-premium">
+  <div style="font-size:42px;">👑</div>
+  <h2>MONBUDGET PREMIUM</h2>
+  <p>Take control of your financial future.</p>
+
+  <div class="price">
+    7,99 $ <span style="font-size:15px;">/ mois</span>
+  </div>
+
+  <ul>
+    <li>Gestion avancée de ton budget</li>
+    <li>Suivi détaillé des revenus et dépenses</li>
+    <li>Outils de planification financière</li>
+    <li>Fonctionnalités Premium exclusives</li>
+    <li>Expérience sans publicité (prévue)</li>
+  </ul>
+
+  <button type="button" id="mbPremiumButton">
+    Découvrir Premium
+  </button>
+
+  <div class="notice" id="mbPremiumNotice" role="status">
+    Les abonnements et paiements seront bientôt disponibles.
+    Aucun paiement n'a été effectué.
+  </div>
+</section>
+
+<script>
+  (function () {
+    const button = document.getElementById("mbPremiumButton");
+    const notice = document.getElementById("mbPremiumNotice");
+
+    if (button && notice) {
+      button.addEventListener("click", function () {
+        notice.style.display =
+          notice.style.display === "block" ? "none" : "block";
+      });
+    }
+  })();
+</script>
+<!-- FIN MONBUDGET PREMIUM -->
 </body>
 </html>
 <!-- Le reste de ton code MONBUDGET -->
