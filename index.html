@@ -1107,48 +1107,5 @@ if ("serviceWorker" in navigator) {
 })();
 </script>
 <!-- END MONBUDGET BACKUP SYSTEM -->
-| table_name    | column_name              | data_type                |
-| ------------- | ------------------------ | ------------------------ |
-| budgets       | id                       | uuid                     |
-| budgets       | user_id                  | uuid                     |
-| budgets       | category_id              | uuid                     |
-| budgets       | name                     | text                     |
-| budgets       | amount                   | numeric                  |
-| budgets       | currency                 | text                     |
-| budgets       | period_start             | date                     |
-| budgets       | period_end               | date                     |
-| budgets       | created_at               | timestamp with time zone |
-| budgets       | mode                     | text                     |
-| budgets       | category_name            | text                     |
-| categories    | id                       | uuid                     |
-| categories    | user_id                  | uuid                     |
-| categories    | name                     | text                     |
-| categories    | type                     | text                     |
-| categories    | color                    | text                     |
-| categories    | created_at               | timestamp with time zone |
-| profiles      | id                       | uuid                     |
-| profiles      | full_name                | text                     |
-| profiles      | created_at               | timestamp with time zone |
-| profiles      | updated_at               | timestamp with time zone |
-| subscriptions | id                       | uuid                     |
-| subscriptions | user_id                  | uuid                     |
-| subscriptions | plan                     | text                     |
-| subscriptions | status                   | text                     |
-| subscriptions | provider                 | text                     |
-| subscriptions | provider_subscription_id | text                     |
-| subscriptions | current_period_end       | timestamp with time zone |
-| subscriptions | created_at               | timestamp with time zone |
-| subscriptions | updated_at               | timestamp with time zone |
-| transactions  | id                       | uuid                     |
-| transactions  | user_id                  | uuid                     |
-| transactions  | category_id              | uuid                     |
-| transactions  | type                     | text                     |
-| transactions  | amount                   | numeric                  |
-| transactions  | currency                 | text                     |
-| transactions  | description              | text                     |
-| transactions  | occurred_on              | date                     |
-| transactions  | created_at               | timestamp with time zone |
-| transactions  | updated_at               | timestamp with time zone |
-| transactions  | mode                     | text                     |
-| transactions  | category_name            | text                     |</body>
+</body>
 </html>
