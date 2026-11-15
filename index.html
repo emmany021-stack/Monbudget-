@@ -814,3 +814,16 @@ Confidentialité
 
 </body>
 </html>
+<!-- Le reste de ton code MONBUDGET -->
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/Monbudget-/sw.js")
+      .catch(error => console.error("PWA:", error));
+  });
+}
+</script>
+
+</body>
+</html>
