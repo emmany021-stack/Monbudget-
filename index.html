@@ -960,5 +960,150 @@ if ("serviceWorker" in navigator) {
     });
 </script>
 <!-- END MONBUDGET PREMIUM FLOATING BUTTON -->
+
+<!-- MONBUDGET BACKUP SYSTEM -->
+<style>
+  .mb-backup {
+    max-width: 650px;
+    margin: 25px auto;
+    padding: 22px;
+    border-radius: 18px;
+    background: #101b35;
+    color: white;
+    border: 1px solid #c9a34a;
+    font-family: Arial, sans-serif;
+  }
+
+  .mb-backup h2 {
+    color: #e5bd62;
+  }
+
+  .mb-backup button {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    margin-top: 12px;
+    border: 0;
+    border-radius: 10px;
+    background: #d5ad55;
+    color: #101828;
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+  .mb-backup p {
+    line-height: 1.5;
+  }
+</style>
+
+<section class="mb-backup">
+  <h2>🛡️ Sauvegarde des données</h2>
+  <p>
+    Télécharge une copie de tes données pour les conserver
+    et les restaurer si nécessaire.
+  </p>
+
+  <button type="button" id="mbExport">
+    Télécharger ma sauvegarde
+  </button>
+
+  <button type="button" id="mbImport">
+    Restaurer une sauvegarde
+  </button>
+
+  <input
+    type="file"
+    id="mbBackupFile"
+    accept=".json,application/json"
+    hidden
+  >
+
+  <p id="mbBackupStatus" role="status"></p>
+</section>
+
+<script>
+(function () {
+  const exportBtn = document.getElementById("mbExport");
+  const importBtn = document.getElementById("mbImport");
+  const fileInput = document.getElementById("mbBackupFile");
+  const status = document.getElementById("mbBackupStatus");
+
+  if (!exportBtn || !importBtn || !fileInput || !status) return;
+
+  exportBtn.addEventListener("click", function () {
+    const backup = {
+      app: "MONBUDGET",
+      version: 1,
+      date: new Date().toISOString(),
+      data: {}
+    };
+
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      backup.data[key] = localStorage.getItem(key);
+    }
+
+    const blob = new Blob(
+      [JSON.stringify(backup, null, 2)],
+      { type: "application/json" }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "monbudget-sauvegarde.json";
+    link.click();
+    URL.revokeObjectURL(url);
+
+    status.textContent = "Sauvegarde téléchargée.";
+  });
+
+  importBtn.addEventListener("click", function () {
+    fileInput.click();
+  });
+
+  fileInput.addEventListener("change", async function () {
+    const file = fileInput.files[0];
+    if (!file) return;
+
+    try {
+      const backup = JSON.parse(await file.text());
+
+      if (
+        backup.app !== "MONBUDGET" ||
+        !backup.data ||
+        typeof backup.data !== "object" ||
+        Array.isArray(backup.data)
+      ) {
+        throw new Error("Fichier invalide");
+      }
+
+      if (!confirm(
+        "La restauration remplacera les données locales portant les mêmes clés. Continuer ?"
+      )) return;
+
+      for (const [key, value] of Object.entries(backup.data)) {
+        if (typeof value !== "string") {
+          throw new Error("Données invalides");
+        }
+      }
+
+      for (const [key, value] of Object.entries(backup.data)) {
+        localStorage.setItem(key, value);
+      }
+
+      alert("Sauvegarde restaurée. MONBUDGET va se recharger.");
+      location.reload();
+
+    } catch (error) {
+      status.textContent =
+        "Impossible de restaurer ce fichier. Vérifie la sauvegarde.";
+    } finally {
+      fileInput.value = "";
+    }
+  });
+})();
+</script>
+<!-- END MONBUDGET BACKUP SYSTEM -->
 </body>
 </html>
