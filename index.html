@@ -190,7 +190,8 @@ $("date").value=today;
 fillCats();
 render();
 </script>
-/* Bouton flottant : fait défiler vers le bloc Premium */
+ <script>
+ /* Bouton flottant : fait défiler vers le bloc Premium */
 document.getElementById("mbPremiumFloating").addEventListener("click",function(){
   var p=document.getElementById("premium-pay");
   if(p){p.scrollIntoView({behavior:"smooth",block:"center"})}
